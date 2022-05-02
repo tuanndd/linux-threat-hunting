@@ -78,7 +78,9 @@ Threat Hunting Methodologies:
 
 Tools:
 - https://osquery.io
+- https://fleetdm.com
 - https://falco.org
+- https://zeek.org
 
 Rule set:
 - https://github.com/palantir/osquery-configuration/
