@@ -1,0 +1,27 @@
+---
+# tasks file for falco
+- name: add repository key
+  apt_key:
+    url: https://falco.org/repo/falcosecurity-3672BA8F.asc
+    state: present
+- name: add server repo
+  apt_repository:
+    repo: 'deb https://download.falco.org/packages/deb stable main'
+    state: present
+    update_cache: yes
+- name: install kernel module
+  apt:
+    name: "linux-headers-{{ ansible_kernel }}"
+    state: present
+  ignore_errors: true
+  register: pkg_result
+  until: pkg_result is success
+- name: install falco
+  apt:
+    name: falco
+    state: present
+    update_cache: yes
+  register: pkg_result
+  until: pkg_result is success
+- name: start falco
+  systemd: name=falco state=started

@@ -1,0 +1,9 @@
+- name: use playbook
+  hosts:
+    - localhost
+  become: true
+  # gather_facts: false
+  
+  roles:
+    - role: osquery
+    - role: falco

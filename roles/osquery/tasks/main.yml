@@ -1,0 +1,21 @@
+---
+# tasks file for osquery
+- name: add repository key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 1484120AC4E9F8A1A577AEEE97A80C63C9D8B80B
+- name: add server repo
+  apt_repository:
+    repo: 'deb [arch=amd64] https://pkg.osquery.io/deb deb main'
+    state: present
+    update_cache: yes
+- name: install package
+  apt:
+    name: osquery
+    state: present
+- name: update osqueryd config
+  copy:
+    src: osquery.conf
+    dest: /etc/osquery/
+    backup: yes
+  notify: restart osqueryd
