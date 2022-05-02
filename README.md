@@ -1,5 +1,5 @@
 # Goals
-This demo setups OSQuery and Falco agents on a Linux server to hunt cybersecurity threats. Rules map to MITRE's Attack Framework.
+This demo setup OSQuery and Falco agents on a Linux server to hunt cybersecurity threats. Rules map to MITRE's Attack Framework.
 
 # Prerequisites
 - A Linux server running Ubuntu 20.04, installed Ansible and docker
